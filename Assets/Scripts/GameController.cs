@@ -7,11 +7,15 @@ using TMPro;
 public class GameController : MonoBehaviour
 {
     public List<TMP_Text> buttonList;
+    public GameObject gameOverPanel;
+    public TMP_Text gameOverText;
+
     private string playerSide;
-        void Start()
+    void Start()
     {
         SetGameControllerReferenceOnButtons();
         playerSide = "X";
+        gameOverPanel.SetActive(false);
     }
     void SetGameControllerReferenceOnButtons()
     {
@@ -80,10 +84,11 @@ public class GameController : MonoBehaviour
         {
             buttonList[i].GetComponentInParent<Button>().interactable = false;
         }
+        gameOverPanel.SetActive(true);
+        gameOverText.text = playerSide + " Wins!";
 
     }
-    
- 
-    
+
+   
 }
 
